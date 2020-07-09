@@ -26,6 +26,7 @@ void AVRPawn::BeginPlay()
 	if (HandControllerClass) {
 		RightHandController = GetWorld()->SpawnActor<AHandController>(HandControllerClass);
 		RightHandController->AttachToComponent(GetRootComponent(), FAttachmentTransformRules::SnapToTargetIncludingScale);
+		RightHandController->SetOwner(this);
 	}
 	
 }
