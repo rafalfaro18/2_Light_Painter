@@ -21,7 +21,7 @@ AStroke::AStroke()
 void AStroke::Update(FVector CursorLocation) {
 	FTransform NewStrokeTransform;
 
-	FVector LocalCursorLocation = GetTransform().InverseTransformPosition(CursorLocation);
+	FVector LocalCursorLocation = GetTransform().InverseTransformPosition(CursorLocation); // Local To World Space.
 
 	NewStrokeTransform.SetLocation(LocalCursorLocation);
 
