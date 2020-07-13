@@ -4,6 +4,8 @@
 #include "VRPawn.h"
 #include "Engine/World.h"
 
+#include "Saving/PainterSaveGame.h"
+
 // Sets default values
 AVRPawn::AVRPawn()
 {
@@ -27,6 +29,9 @@ void AVRPawn::BeginPlay()
 		RightHandController->AttachToComponent(GetRootComponent(), FAttachmentTransformRules::SnapToTargetIncludingScale);
 		RightHandController->SetOwner(this);
 	}
+
+	UPainterSaveGame* Painting = UPainterSaveGame::Create();
+	Painting->Save();
 	
 }
 
