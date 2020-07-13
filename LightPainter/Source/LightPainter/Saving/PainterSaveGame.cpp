@@ -23,24 +23,20 @@ UPainterSaveGame* UPainterSaveGame::Load(){
 
 void UPainterSaveGame::SerializeFromWorld(UWorld* World) {
 	Strokes.Empty();
-	for (TActorIterator<AStroke> StrokeItr(World); StrokeItr; ++StrokeItr)
-	{
-		//TODO:Serialize
-		Strokes.Add(StrokeItr->GetClass());
+	for (TActorIterator<AStroke> StrokeItr(World); StrokeItr; ++StrokeItr) {
+		Strokes.Add(StrokeItr->SerializeToStruct());
 	}
 }
 
 void UPainterSaveGame::DeserializeToWorld(UWorld* World) {
 	ClearWorld(World);
-	for (TSubclassOf<AStroke> StrokeClass : Strokes)
-	{
-		World->SpawnActor<AStroke>(StrokeClass);
+	for (FStrokeState StrokeState : Strokes) {
+		AStroke::SpawnAndDeserializeFromStruct(World, StrokeState);
 	}
 }
 
 void UPainterSaveGame::ClearWorld(UWorld* World) {
-	for (TActorIterator<AStroke> StrokeItr(World); StrokeItr; ++StrokeItr)
-	{
+	for (TActorIterator<AStroke> StrokeItr(World); StrokeItr; ++StrokeItr) {
 		StrokeItr->Destroy();
 	}
 }
