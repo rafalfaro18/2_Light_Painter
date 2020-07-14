@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "MotionControllerComponent.h"
 #include "HandControllerBase.generated.h"
 
 UCLASS()
@@ -15,12 +16,13 @@ public:
 	// Sets default values for this actor's properties
 	AHandControllerBase();
 
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
+	virtual void TriggerPressed() {}
+	virtual void TriggerReleased() {}
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+private:
+
+	// Components
+	UPROPERTY(VisibleAnywhere)
+	UMotionControllerComponent* MotionController;
 
 };

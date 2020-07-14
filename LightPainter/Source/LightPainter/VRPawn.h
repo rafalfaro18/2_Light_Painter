@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
 #include "Camera/CameraComponent.h"
-#include "PaintBrushHandController.h"
+#include "HandControllerBase.h"
 #include "VRPawn.generated.h"
 
 UCLASS()
@@ -32,7 +32,7 @@ private:
 	
 	// Config
 	UPROPERTY(EditDefaultsOnly)
-	TSubclassOf<APaintBrushHandController> PaintBrushHandControllerClass;
+	TSubclassOf<AHandControllerBase> PaintBrushHandControllerClass;
 
 	// Components
 	UPROPERTY(VisibleAnywhere)
@@ -43,6 +43,6 @@ private:
 
 	// Reference
 	UPROPERTY()
-	APaintBrushHandController* RightPaintBrushHandController;
+	AHandControllerBase* RightPaintBrushHandController;
 
 };

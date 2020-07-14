@@ -18,8 +18,8 @@ public:
 	// Sets default values for this actor's properties
 	APaintBrushHandController();
 
-	void TriggerPressed();
-	void TriggerReleased();
+	void TriggerPressed() override;
+	void TriggerReleased() override;
 
 protected:
 	// Called when the game starts or when spawned
@@ -34,10 +34,6 @@ private:
 	// Config
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<AStroke> StrokeClass;
-
-	// Components
-	UPROPERTY(VisibleAnywhere)
-	UMotionControllerComponent* MotionController;
 
 	// State
 	AStroke* CurrentStroke;
