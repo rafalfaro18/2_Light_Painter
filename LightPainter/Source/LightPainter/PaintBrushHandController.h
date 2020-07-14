@@ -6,10 +6,11 @@
 #include "GameFramework/Actor.h"
 #include "MotionControllerComponent.h"
 #include "Stroke.h"
+#include "HandControllerBase.h"
 #include "PaintBrushHandController.generated.h"
 
 UCLASS()
-class LIGHTPAINTER_API APaintBrushHandController : public AActor
+class LIGHTPAINTER_API APaintBrushHandController : public AHandControllerBase
 {
 	GENERATED_BODY()
 	
