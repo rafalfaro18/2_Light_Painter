@@ -4,6 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+
+#include "Components/WidgetComponent.h"
+
 #include "PaintingPicker.generated.h"
 
 UCLASS()
@@ -19,8 +22,14 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+private:
+	UPROPERTY(VisibleAnywhere)
+	USceneComponent* Root;
+
+	UPROPERTY(VisibleAnywhere)
+	UWidgetComponent* PaintingGrid;
+
+	UPROPERTY(VisibleAnywhere)
+	UWidgetComponent* ActionBar;
 
 };

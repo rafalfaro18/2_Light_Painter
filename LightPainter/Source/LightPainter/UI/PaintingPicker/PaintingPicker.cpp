@@ -3,11 +3,22 @@
 
 #include "PaintingPicker.h"
 
+#include "PaintingGrid.h"
+
 // Sets default values
 APaintingPicker::APaintingPicker()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+
+	Root = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
+	SetRootComponent(Root);
+
+	PaintingGrid = CreateDefaultSubobject<UWidgetComponent>(TEXT("PaintingGrid"));
+	PaintingGrid->SetupAttachment(GetRootComponent());
+
+	ActionBar = CreateDefaultSubobject<UWidgetComponent>(TEXT("ActionBar"));
+	ActionBar->SetupAttachment(GetRootComponent());
 
 }
 
@@ -15,13 +26,11 @@ APaintingPicker::APaintingPicker()
 void APaintingPicker::BeginPlay()
 {
 	Super::BeginPlay();
+
+	UPaintingGrid* PaintingGridWidget = Cast<UPaintingGrid>(PaintingGrid->GetUserWidgetObject());
+	if (!PaintingGridWidget) return;
+
+	PaintingGridWidget->AddPainting();
 	
-}
-
-// Called every frame
-void APaintingPicker::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-
 }
 
