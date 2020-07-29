@@ -23,11 +23,6 @@ UPainterSaveGame* UPainterSaveGame::Create() {
 }
 
 bool UPainterSaveGame::Save() {
-	UE_LOG(LogTemp, Warning, TEXT("Painting Index:"));
-	// In the lecture it was called SlotName not SlotNameItem but it caused error C4458.
-	for (FString SlotNameItem : UPainterSaveGameIndex::Load()->GetSlotNames()) {
-		UE_LOG(LogTemp, Warning, TEXT("Painting name: %s"), *SlotNameItem);
-	}
 	return UGameplayStatics::SaveGameToSlot(this, SlotName, 0);
 }
 
