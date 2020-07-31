@@ -20,11 +20,23 @@ void APaintingGameMode::InitGame(const FString& MapName, const FString& Options,
 void APaintingGameMode::BeginPlay() {
 	Super::BeginPlay();
 
+	Load();
+
+	UStereoLayerFunctionLibrary::HideSplashScreen();
+}
+
+void APaintingGameMode::Save() {
+	UPainterSaveGame* Painting = UPainterSaveGame::Load(SlotName);
+	if (Painting) {
+		Painting->SerializeFromWorld(GetWorld());
+		Painting->Save();
+	}
+}
+
+void APaintingGameMode::Load() {
 	UPainterSaveGame* Painting = UPainterSaveGame::Load(SlotName);
 	if (Painting) {
 		Painting->DeserializeToWorld(GetWorld());
-
-		UStereoLayerFunctionLibrary::HideSplashScreen();
 	}
 	else {
 		UE_LOG(LogTemp, Warning, TEXT("Game slot not found: %s"), *SlotName);
