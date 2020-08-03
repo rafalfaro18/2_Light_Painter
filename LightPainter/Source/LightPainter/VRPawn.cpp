@@ -27,11 +27,6 @@ void AVRPawn::BeginPlay()
 {
 	Super::BeginPlay();
 
-	UPainterSaveGame* Painting = UPainterSaveGame::Create();
-	if (Painting && Painting->Save()) {
-		CurrentSlotName = Painting->GetSlotName();
-	}
-
 	if (PaintBrushHandControllerClass) {
 		RightPaintBrushHandController = GetWorld()->SpawnActor<AHandControllerBase>(PaintBrushHandControllerClass);
 		RightPaintBrushHandController->AttachToComponent(GetRootComponent(), FAttachmentTransformRules::SnapToTargetIncludingScale);
