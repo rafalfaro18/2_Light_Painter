@@ -24,8 +24,8 @@ protected:
 
 private:
 
-	void RightTriggerPressed() { if (RightPaintBrushHandController) RightPaintBrushHandController->TriggerPressed(); }
-	void RightTriggerReleased() { if (RightPaintBrushHandController) RightPaintBrushHandController->TriggerReleased(); }
+	void RightTriggerPressed() { if (RightHandController) RightHandController->TriggerPressed(); }
+	void RightTriggerReleased() { if (RightHandController) RightHandController->TriggerReleased(); }
 
 	void Save();
 	
@@ -42,6 +42,6 @@ private:
 
 	// Reference
 	UPROPERTY()
-	AHandControllerBase* RightPaintBrushHandController;
+	AHandControllerBase* RightHandController;
 
 };
