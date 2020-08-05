@@ -32,6 +32,8 @@ private:
 	// Config
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<AHandControllerBase> RightHandControllerClass;
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<AHandControllerBase> LeftHandControllerClass;
 
 	// Components
 	UPROPERTY(VisibleAnywhere)
@@ -43,5 +45,7 @@ private:
 	// Reference
 	UPROPERTY()
 	AHandControllerBase* RightHandController;
+	UPROPERTY()
+	AHandControllerBase* LeftHandController;
 
 };
