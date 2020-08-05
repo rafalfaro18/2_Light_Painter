@@ -31,7 +31,7 @@ private:
 	
 	// Config
 	UPROPERTY(EditDefaultsOnly)
-	TSubclassOf<AHandControllerBase> PaintBrushHandControllerClass;
+	TSubclassOf<AHandControllerBase> RightHandControllerClass;
 
 	// Components
 	UPROPERTY(VisibleAnywhere)
