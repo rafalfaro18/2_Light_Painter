@@ -13,5 +13,16 @@ UCLASS(meta = (BlueprintSpawnableComponent))
 class LIGHTPAINTER_API UWidgetTouchingComponent : public UWidgetInteractionComponent
 {
 	GENERATED_BODY()
+
+public:
+	void TickComponent(
+		float DeltaTime,
+		enum ELevelTick TickType,
+		FActorComponentTickFunction* ThisTickFunction
+	) override;
+
+private:
+	// State
+	bool bIsClicked = false;
 	
 };
