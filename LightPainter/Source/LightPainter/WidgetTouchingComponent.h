@@ -9,7 +9,7 @@
 /**
  * 
  */
-UCLASS()
+UCLASS(meta = (BlueprintSpawnableComponent))
 class LIGHTPAINTER_API UWidgetTouchingComponent : public UWidgetInteractionComponent
 {
 	GENERATED_BODY()
