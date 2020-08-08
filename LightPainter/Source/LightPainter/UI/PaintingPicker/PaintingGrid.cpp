@@ -40,6 +40,12 @@ void UPaintingGrid::AddPaginationDot(bool Active) {
 	BoxSlot->SetPadding(FMargin(PaginationDotPadding, 0));
 }
 
+void UPaintingGrid::ClearPaginationDots() {
+	if (!PaginationDots) return;
+
+	PaginationDots->ClearChildren();
+}
+
 int32 UPaintingGrid::GetNumberOfSlots() const {
 	return PaintingGrid->GetChildrenCount();
 }

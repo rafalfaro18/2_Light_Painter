@@ -35,7 +35,7 @@ void APaintingPicker::BeginPlay()
 		ActionBarWidget->SetParentPicker(this);
 	}
 
-	RefreshSlots();
+	Refresh();
 }
 
 void APaintingPicker::RefreshSlots() {
@@ -43,10 +43,6 @@ void APaintingPicker::RefreshSlots() {
 	UE_LOG(LogTemp, Warning, TEXT("Number of pages %d"), GetNumberOfPages());
 
 	if (!GetPaintingGrid()) return;
-
-	GetPaintingGrid()->AddPaginationDot(true);
-	GetPaintingGrid()->AddPaginationDot(false);
-	GetPaintingGrid()->AddPaginationDot(false);
 
 	GetPaintingGrid()->ClearPaintings();
 
@@ -58,10 +54,20 @@ void APaintingPicker::RefreshSlots() {
 	
 }
 
+void APaintingPicker::RefreshDots() {
+	if (!GetPaintingGrid()) return;
+
+	GetPaintingGrid()->ClearPaginationDots();
+
+	for (int32 i = 0; i < GetNumberOfPages(); ++i) {
+		GetPaintingGrid()->AddPaginationDot(CurrentPage == i);
+	}
+}
+
 void APaintingPicker::AddPainting() {
 	UPainterSaveGame::Create();
 
-	RefreshSlots();
+	Refresh();
 }
 
 void APaintingPicker::ToggleDeleteMode() {
@@ -71,8 +77,7 @@ void APaintingPicker::ToggleDeleteMode() {
 	GetPaintingGrid()->ClearPaintings();
 }
 
-int32 APaintingPicker::GetNumberOfPages() const
-{
+int32 APaintingPicker::GetNumberOfPages() const {
 	if (!GetPaintingGrid()) return 0;
 
 	int32 TotalNumberOfSlot = UPainterSaveGameIndex::Load()->GetSlotNames().Num();
