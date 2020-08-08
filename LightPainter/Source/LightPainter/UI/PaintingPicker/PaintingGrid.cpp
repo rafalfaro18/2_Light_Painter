@@ -33,6 +33,7 @@ void UPaintingGrid::AddPaginationDot(bool Active) {
 
 	auto Dot = CreateWidget<UPaginationDot>(GetWorld(), PaginationDotClass);
 	if (!Dot) return;
+	Dot->SetActive(Active);
 
 	// On the course it was called Slot. But it was renamed because of error C4458.
 	UHorizontalBoxSlot* BoxSlot = PaginationDots->AddChildToHorizontalBox(Dot);
