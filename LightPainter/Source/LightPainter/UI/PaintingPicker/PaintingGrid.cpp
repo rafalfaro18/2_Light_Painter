@@ -4,6 +4,7 @@
 #include "PaintingGrid.h"
 
 #include "Components/SizeBox.h"
+#include "Components/HorizontalBoxSlot.h"
 
 void UPaintingGrid::AddPainting(int32 PaintingIndex, FString PaintingName) {
 	if (!PaintingGrid) return;
@@ -33,5 +34,7 @@ void UPaintingGrid::AddPaginationDot(bool Active) {
 	auto Dot = CreateWidget<UPaginationDot>(GetWorld(), PaginationDotClass);
 	if (!Dot) return;
 
-	PaginationDots->AddChild(Dot);
+	// On the course it was called Slot. But it was renamed because of error C4458.
+	UHorizontalBoxSlot* BoxSlot = PaginationDots->AddChildToHorizontalBox(Dot);
+	BoxSlot->SetPadding(FMargin(PaginationDotPadding, 0));
 }
